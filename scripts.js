@@ -4,25 +4,24 @@ let calculated = '1';
 
 // Only allowed to change below
 
-const logCalc = () => {
-    const isString = typeof calculated === 'string' && !isNaN(calculated);
-    const calculatedAsNumber = parseFloat(calculated);
-    return calculatedAsNumber + 1;
+const logCalc = () => { 
+    const isString = typeof calculated === 'string' && !isNaN(calculated); /*checking if calculated is a numerical string*/
+    const calculatedAsNumber = parseFloat(calculated); /*converting calculated into a number*/
+    calculated = calculatedAsNumber + 1; /*return the next calculated value by adding 1 to the number*/
 }
 
 const calcUser = () => {
-    const originalCalculated = calculated;
-    calculated = logCalc();
+    logCalc();
     
-    if (calculated > 2 && originalCalculated <= 2) {
+    if (calculated > 2) {
         user = 'John';
         state = 'requesting';
     }
     
-    if (calculated > 3 && originalCalculated <= 3) {
+    if (calculated > 3) {
         state = 'idle';
     }
-}
+};
 
 const checkUser = () => {
     if (user && state === 'requesting') {
@@ -44,5 +43,5 @@ calcUser();
 checkUser();
 calcUser();
 
-checkUser();
-calcUser();
+
+
